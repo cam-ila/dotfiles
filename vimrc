@@ -7,12 +7,17 @@ Plug 'tpope/vim-surround'
 Plug 'davidhalter/jedi-vim' "easy pair characters manipulation
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-repeat' " enable repeating supported plugin maps with .
+Plug 'nvie/vim-flake8'
 call plug#end()
 
 syntax on 
 filetype plugin indent on     
 
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore irrelevant files like pyc and swap files
+" Find current buffer in nerdtree
+noremap <C-m> :NERDTreeFind<CR>
+let g:NERDTreeMapOpenVSplit='v'      " keep mappings between ctrlp and nerdtree concise
 
 let g:fzf_layout = {'down': '~50%'}
 nmap <c-p> :Files<cr>
@@ -39,8 +44,11 @@ set hidden
 nnoremap zO zczO
 " fold tag
 nnoremap <leader>ft Vatzf
+nnoremap <esc><esc> :noh<return>
 
-colorscheme zellner 
+" move
+map <F2> <C-W><C-W>_
+
 set ignorecase
 set smartcase
 set relativenumber
